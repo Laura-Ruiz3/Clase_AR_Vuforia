@@ -1,0 +1,1 @@
+C:\Users\andre\Documents\Practicas AR y VR\Git\Clase_AR_Vuforia\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\406w6a1i\obj\arm64-v8a

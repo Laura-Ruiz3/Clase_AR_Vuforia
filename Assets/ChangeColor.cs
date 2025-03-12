@@ -6,14 +6,16 @@ using Color = UnityEngine.Color;
 public class ChangeColor1 : MonoBehaviour
 {
     public GameObject model;
-    //public Color color;
-    public Color[] colors = { Color.cyan, Color.green, Color.red, Color.yellow, Color.gray };
+    public Color[] colors;    
     public Material colorMaterial;
-    public int i = 0;
+    public Texture[] texture;
+    public Material textureMaterial;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        colorMaterial.color = colors[i];
+        colorMaterial.color = colors[0];
+        textureMaterial.mainTexture = texture[0];
     }
 
     // Update is called once per frame
@@ -23,12 +25,7 @@ public class ChangeColor1 : MonoBehaviour
     }
     public void ChangeColor_BTN()
     {
-        //model.GetComponent<Renderer>().material.color = color;
-        //colorMaterial.color = color;
-        if (i < 4)
-            i++;
-        else
-            i = 0;
-        colorMaterial.color = colors[i];
+        textureMaterial.mainTexture = texture[Random.Range(0, texture.Length)];
+        colorMaterial.color = colors[Random.Range(0,colors.Length)];
     }
 }

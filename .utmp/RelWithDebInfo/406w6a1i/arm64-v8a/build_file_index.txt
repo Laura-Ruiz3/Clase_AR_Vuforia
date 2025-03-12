@@ -1,0 +1,2 @@
+C:\Users\andre\Documents\Practicas AR y VR\Git\Clase_AR_Vuforia\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\Users\andre\Documents\Practicas AR y VR\Git\Clase_AR_Vuforia\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt
