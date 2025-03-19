@@ -8,8 +8,14 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/arScene.unity
     guid: 07093f475d40af54eaf6d1387f2f2aeb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/changeTextureScene.unity
     guid: b88d9020dec845d44be3916755beebfd
+  - enabled: 0
+    path: Assets/Scenes/marcadores2.unity
+    guid: 2113eb35857ddde46813305ce28e58d7
+  - enabled: 1
+    path: Assets/Scenes/marcadores.unity
+    guid: d2ca5ce9132d4ed42ae4dead743031b5
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
