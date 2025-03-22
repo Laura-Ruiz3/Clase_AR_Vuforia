@@ -1564,13 +1564,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 1408800084}
   ImageTargets:
-  - {fileID: 1611156901}
   - {fileID: 296668680}
+  - {fileID: 1611156901}
   - {fileID: 45621868}
   - {fileID: 1942615507}
   - {fileID: 373743955}
   currentTarget: 0
   speed: 1
+  dropdown: {fileID: 0}
 --- !u!114 &1611156904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1626,7 +1627,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: -936.7656}
+  m_AnchoredPosition: {x: -1, y: -464}
   m_SizeDelta: {x: 557.6475, y: 147.3908}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1624481345
