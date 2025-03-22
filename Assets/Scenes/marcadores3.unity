@@ -330,7 +330,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1611156904}
         m_TargetAssemblyTypeName: Move1, Assembly-CSharp
-        m_MethodName: activTarget
+        m_MethodName: goToTarget
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1446,7 +1446,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1611156904}
         m_TargetAssemblyTypeName: Move1, Assembly-CSharp
-        m_MethodName: activTarget
+        m_MethodName: goToTarget
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2296,7 +2296,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1611156904}
         m_TargetAssemblyTypeName: Move1, Assembly-CSharp
-        m_MethodName: activTarget
+        m_MethodName: goToTarget
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2944,15 +2944,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1dd17158970cf4b8005d2ee73040bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 1408800084}
-  ImageTargets:
-  - {fileID: 1942615507}
-  - {fileID: 296668680}
-  - {fileID: 1611156901}
-  - {fileID: 45621868}
-  - {fileID: 373743955}
-  currentTarget: 0
-  speed: 1
 --- !u!114 &1611156904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3112,7 +3103,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1611156904}
         m_TargetAssemblyTypeName: Move1, Assembly-CSharp
-        m_MethodName: activTarget
+        m_MethodName: goToTarget
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3479,7 +3470,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1611156904}
         m_TargetAssemblyTypeName: Move1, Assembly-CSharp
-        m_MethodName: activTarget
+        m_MethodName: goToTarget
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
