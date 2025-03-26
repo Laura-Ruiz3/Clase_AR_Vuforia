@@ -127,10 +127,10 @@ public class Move1 : MonoBehaviour
         if (noTarget > 0)
         {
             items[noTarget - 1].SetActive(true);
-            if (noTarget < 4)
-            {
-                itemIcons[noTarget - 1].SetActive(true);
-            }
+            //if (noTarget < 4)
+            //{
+            //    itemIcons[noTarget - 1].SetActive(true);
+            //}
         }
         //StartCoroutine(ShowIcon(noTarget));
         StartCoroutine(ShowText(noTarget));
@@ -150,7 +150,6 @@ public class Move1 : MonoBehaviour
             case 0:
                 if (itemFound[0] == false) {
                     itemFound[0] = true;
-                    //textComponent[0].enabled = true;
                     fullText = textBoxItem.Find("Mission")?.GetComponent<TMP_Text>().text;
                     textTemplate.text = "";
                     foreach (char letter in fullText)
@@ -199,6 +198,7 @@ public class Move1 : MonoBehaviour
                 }
                 break;
             case 1:
+                itemIcons[noTarget - 1].SetActive(true);
                 if (itemFound[1] == false)
                 {
                     itemFound[1] = true;
@@ -230,18 +230,33 @@ public class Move1 : MonoBehaviour
             case 2:
                 if (itemFound[2] == false)
                 {
-                    itemFound[2] = true;
-                    fullText = textBoxItem.Find("Gold")?.GetComponent<TMP_Text>().text;
-                    textTemplate.text = "";
-                    foreach (char letter in fullText)
+                    if (itemFound[1] == false)
                     {
-                        if (stopTextCoroutine)
-                            yield break;
-                        textTemplate.text += letter;
-                        yield return new WaitForSeconds(delay);
+                        fullText = textBoxItem.Find("GoldNotAchieved")?.GetComponent<TMP_Text>().text;
+                        textTemplate.text = "";
+                        foreach (char letter in fullText)
+                        {
+                            if (stopTextCoroutine)
+                                yield break;
+                            textTemplate.text += letter;
+                            yield return new WaitForSeconds(delay);
+                        }
                     }
+                    else {
+                        itemIcons[noTarget - 1].SetActive(true);
+                        itemFound[2] = true;
+                        fullText = textBoxItem.Find("Gold")?.GetComponent<TMP_Text>().text;
+                        textTemplate.text = "";
+                        foreach (char letter in fullText)
+                        {
+                            if (stopTextCoroutine)
+                                yield break;
+                            textTemplate.text += letter;
+                            yield return new WaitForSeconds(delay);
+                        }
 
-                    yield return new WaitForSeconds(1.0f);
+                        yield return new WaitForSeconds(1.0f);
+                    }
                 }
                 else
                 {
@@ -259,18 +274,33 @@ public class Move1 : MonoBehaviour
             case 3:
                 if (itemFound[3] == false)
                 {
-                    itemFound[3] = true;
-                    fullText = textBoxItem.Find("Wheat")?.GetComponent<TMP_Text>().text;
-                    textTemplate.text = "";
-                    foreach (char letter in fullText)
+                    if (itemFound[2] == false)
                     {
-                        if (stopTextCoroutine)
-                            yield break;
-                        textTemplate.text += letter;
-                        yield return new WaitForSeconds(delay);
+                        fullText = textBoxItem.Find("WheatNotAchieved")?.GetComponent<TMP_Text>().text;
+                        textTemplate.text = "";
+                        foreach (char letter in fullText)
+                        {
+                            if (stopTextCoroutine)
+                                yield break;
+                            textTemplate.text += letter;
+                            yield return new WaitForSeconds(delay);
+                        }
                     }
+                    else {
+                        itemIcons[noTarget - 1].SetActive(true);
+                        itemFound[3] = true;
+                        fullText = textBoxItem.Find("Wheat")?.GetComponent<TMP_Text>().text;
+                        textTemplate.text = "";
+                        foreach (char letter in fullText)
+                        {
+                            if (stopTextCoroutine)
+                                yield break;
+                            textTemplate.text += letter;
+                            yield return new WaitForSeconds(delay);
+                        }
 
-                    yield return new WaitForSeconds(1.0f);
+                        yield return new WaitForSeconds(1.0f);
+                    }
                 }
                 else
                 {
@@ -286,11 +316,11 @@ public class Move1 : MonoBehaviour
                 }
                 break;
             case 4:
-                if (itemFound[3] == false)
+                if (itemFound[4] == false)
                 {
-                    if (itemFound[2] == false)
+                    if (itemFound[3] == false)
                     {
-                        fullText = "Algo de trigo";
+                        fullText = textBoxItem.Find("BlueChickenNotAchieved")?.GetComponent<TMP_Text>().text;
                         textTemplate.text = "";
                         foreach (char letter in fullText)
                         {
@@ -301,7 +331,7 @@ public class Move1 : MonoBehaviour
                         }
                     }
                     else {
-                        itemFound[3] = true;
+                        itemFound[4] = true;
                         fullText = textBoxItem.Find("BlueChicken")?.GetComponent<TMP_Text>().text;
                         textTemplate.text = "";
                         foreach (char letter in fullText)
