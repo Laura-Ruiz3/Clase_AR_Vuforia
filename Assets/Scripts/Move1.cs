@@ -11,6 +11,7 @@ public class Move1 : MonoBehaviour
 {
     public GameObject model;
     public GameObject[] items;
+    public GameObject[] itemIcons;
     public ObserverBehaviour[] ImageTargets;
     public int currentTarget;
     public float speed = 1.0f;
@@ -19,17 +20,23 @@ public class Move1 : MonoBehaviour
     private bool isMoving = false;
     public GameObject textBox;
 
+    //Estados
+    Transform textBoxItem;
+    TMP_Text textFound;
+    private bool[] itemFound;
+
     //Texto
     public TMP_Text textTemplate;
     public TMP_Text[] textComponent;
+    public TMP_Text[] itemPicked;
     public float delay = 0.05f;
-    public float delay1 = 5.0f;
     private string fullText;
     private bool stopTextCoroutine = false;
 
     //Start is called before the first frame update
     void Start()
     {        
+        textBoxItem = GameObject.Find("TextBox").transform;
         textTemplate.text = "";
         textBox.SetActive(false);
         foreach (TMP_Text text in textComponent)
@@ -40,6 +47,13 @@ public class Move1 : MonoBehaviour
         {
             item.SetActive(false);
         }
+        foreach (GameObject item in itemIcons)
+        {
+            item.SetActive(false);
+        }
+        itemFound = new bool[5];
+        print(textBoxItem.Find("Mission")?.GetComponent<TMP_Text>().text);
+        //fullText = textBoxItem.Find("Mission")?.GetComponent<TMP_Text>().text;
         StartCoroutine(ShowText(noTarget));
     }
 
@@ -110,133 +124,235 @@ public class Move1 : MonoBehaviour
 
         currentTarget = (currentTarget + 1) % ImageTargets.Length;
         isMoving = false; //Terminó el recorrido        
-        if(noTarget > 0)
-            items[noTarget-1].SetActive(true);
+        if (noTarget > 0)
+        {
+            items[noTarget - 1].SetActive(true);
+            if (noTarget < 4)
+            {
+                itemIcons[noTarget - 1].SetActive(true);
+            }
+        }
+        //StartCoroutine(ShowIcon(noTarget));
         StartCoroutine(ShowText(noTarget));
     }
 
 
     private IEnumerator ShowText(int noTarget)
-    {
+    {        
         stopTextCoroutine = false;
         textBox.SetActive(true);
         textTemplate.text = "";
         yield return new WaitForSeconds(0.5f);
         Debug.Log(noTarget);
-        if (noTarget == 0)
+        Debug.Log(itemFound[0]);
+        switch (noTarget)
         {
-            yield return new WaitForSeconds(delay1);
-            textComponent[0].enabled = true;
-            fullText = textComponent[0].text;
-            textTemplate.text = "";
-            foreach (char letter in fullText)
-            {
-                if (stopTextCoroutine)
-                    yield break;
-                Debug.Log("En función: " + textTemplate.text);
-                textTemplate.text += letter;
-                yield return new WaitForSeconds(delay);
-            }
+            case 0:
+                if (itemFound[0] == false) {
+                    itemFound[0] = true;
+                    //textComponent[0].enabled = true;
+                    fullText = textBoxItem.Find("Mission")?.GetComponent<TMP_Text>().text;
+                    textTemplate.text = "";
+                    foreach (char letter in fullText)
+                    {
+                        if (stopTextCoroutine)
+                            yield break;
+                        textTemplate.text += letter;
+                        yield return new WaitForSeconds(delay);
+                    }
 
-            yield return new WaitForSeconds(1.0f);
+                    yield return new WaitForSeconds(1.0f);
 
-            fullText = textComponent[1].text;
-            textTemplate.text = "";
-            foreach (char letter in fullText)
-            {
-                if (stopTextCoroutine)
-                    yield break;
-                Debug.Log("En función: " + textTemplate.text);
-                textTemplate.text += letter;
-                yield return new WaitForSeconds(delay);
-            }
-        }
-        else
-        {
-            fullText = textComponent[noTarget + 1].text;
-            foreach (char letter in fullText)
-            {
-                if (stopTextCoroutine)
-                    yield break;
-                Debug.Log("En función: " + textTemplate.text);
-                textTemplate.text += letter;
-                yield return new WaitForSeconds(delay);
-            }
+                    fullText = textBoxItem.Find("Mission (1)")?.GetComponent<TMP_Text>().text;
+                    textTemplate.text = "";
+                    foreach (char letter in fullText)
+                    {
+                        if (stopTextCoroutine)
+                            yield break;
+                        textTemplate.text += letter;
+                        yield return new WaitForSeconds(delay);
+                    }
+
+                    yield return new WaitForSeconds(1.0f);
+
+                    fullText = textBoxItem.Find("Mission (2)")?.GetComponent<TMP_Text>().text;
+                    textTemplate.text = "";
+                    foreach (char letter in fullText)
+                    {
+                        if (stopTextCoroutine)
+                            yield break;
+                        textTemplate.text += letter;
+                        yield return new WaitForSeconds(delay);
+                    }
+                }
+                else
+                {
+                    fullText = textBoxItem.Find("MissionRead")?.GetComponent<TMP_Text>().text;
+                    textTemplate.text = "";
+                    foreach (char letter in fullText)
+                    {
+                        if (stopTextCoroutine)
+                            yield break;
+                        textTemplate.text += letter;
+                        yield return new WaitForSeconds(delay);
+                    }
+                }
+                break;
+            case 1:
+                if (itemFound[1] == false)
+                {
+                    itemFound[1] = true;
+                    fullText = textBoxItem.Find("FarmHoe")?.GetComponent<TMP_Text>().text;
+                    textTemplate.text = "";
+                    foreach (char letter in fullText)
+                    {
+                        if (stopTextCoroutine)
+                            yield break;
+                        textTemplate.text += letter;
+                        yield return new WaitForSeconds(delay);
+                    }
+
+                    yield return new WaitForSeconds(1.0f);
+                }
+                else
+                {
+                    fullText = textBoxItem.Find("FarmHoeFounded")?.GetComponent<TMP_Text>().text;
+                    textTemplate.text = "";
+                    foreach (char letter in fullText)
+                    {
+                        if (stopTextCoroutine)
+                            yield break;
+                        textTemplate.text += letter;
+                        yield return new WaitForSeconds(delay);
+                    }
+                }
+                break;
+            case 2:
+                if (itemFound[2] == false)
+                {
+                    itemFound[2] = true;
+                    fullText = textBoxItem.Find("Gold")?.GetComponent<TMP_Text>().text;
+                    textTemplate.text = "";
+                    foreach (char letter in fullText)
+                    {
+                        if (stopTextCoroutine)
+                            yield break;
+                        textTemplate.text += letter;
+                        yield return new WaitForSeconds(delay);
+                    }
+
+                    yield return new WaitForSeconds(1.0f);
+                }
+                else
+                {
+                    fullText = textBoxItem.Find("GoldFounded")?.GetComponent<TMP_Text>().text;
+                    textTemplate.text = "";
+                    foreach (char letter in fullText)
+                    {
+                        if (stopTextCoroutine)
+                            yield break;
+                        textTemplate.text += letter;
+                        yield return new WaitForSeconds(delay);
+                    }
+                }
+                break;
+            case 3:
+                if (itemFound[3] == false)
+                {
+                    itemFound[3] = true;
+                    fullText = textBoxItem.Find("Wheat")?.GetComponent<TMP_Text>().text;
+                    textTemplate.text = "";
+                    foreach (char letter in fullText)
+                    {
+                        if (stopTextCoroutine)
+                            yield break;
+                        textTemplate.text += letter;
+                        yield return new WaitForSeconds(delay);
+                    }
+
+                    yield return new WaitForSeconds(1.0f);
+                }
+                else
+                {
+                    fullText = textBoxItem.Find("WheatFounded")?.GetComponent<TMP_Text>().text;
+                    textTemplate.text = "";
+                    foreach (char letter in fullText)
+                    {
+                        if (stopTextCoroutine)
+                            yield break;
+                        textTemplate.text += letter;
+                        yield return new WaitForSeconds(delay);
+                    }
+                }
+                break;
+            case 4:
+                if (itemFound[3] == false)
+                {
+                    if (itemFound[2] == false)
+                    {
+                        fullText = "Algo de trigo";
+                        textTemplate.text = "";
+                        foreach (char letter in fullText)
+                        {
+                            if (stopTextCoroutine)
+                                yield break;
+                            textTemplate.text += letter;
+                            yield return new WaitForSeconds(delay);
+                        }
+                    }
+                    else {
+                        itemFound[3] = true;
+                        fullText = textBoxItem.Find("BlueChicken")?.GetComponent<TMP_Text>().text;
+                        textTemplate.text = "";
+                        foreach (char letter in fullText)
+                        {
+                            if (stopTextCoroutine)
+                                yield break;
+                            textTemplate.text += letter;
+                            yield return new WaitForSeconds(delay);
+                        }
+                    }
+
+                    yield return new WaitForSeconds(1.0f);
+                }
+                else
+                {
+                    fullText = textBoxItem.Find("BlueChickenFounded")?.GetComponent<TMP_Text>().text;
+                    textTemplate.text = "";
+                    foreach (char letter in fullText)
+                    {
+                        if (stopTextCoroutine)
+                            yield break;
+                        textTemplate.text += letter;
+                        yield return new WaitForSeconds(delay);
+                    }
+                }
+                break;
+            default:
+                fullText = textBoxItem.Find("Bug")?.GetComponent<TMP_Text>().text;
+                textTemplate.text = "";
+                foreach (char letter in fullText)
+                {
+                    if (stopTextCoroutine)
+                        yield break;
+                    textTemplate.text += letter;
+                    yield return new WaitForSeconds(delay);
+                }
+                break;
         }
         yield return new WaitForSeconds(1.0f);
         textBox.SetActive(false);
-        textTemplate.text = "";
+        textTemplate.text = "";        
     }
 
-    //private IEnumerator ShowText(int noTarget)
+    //private IEnumerator ShowIcon(int noTarget)
     //{
-    //    textBox.SetActive(true);
-    //    textTemplate.text = "";
-
-    //    yield return null;
-
+    //    stopTextCoroutine = true;
     //    yield return new WaitForSeconds(0.5f);
-
-    //    // Validar que noTarget + 1 esté dentro de los límites de textComponent
-    //    if (noTarget == 0)
+    //    if (noTarget > 0 && noTarget < 3)
     //    {
-    //        yield return new WaitForSeconds(delay1);
-
-    //        textComponent[0].enabled = true;
-    //        fullText = textComponent[0].text;
-    //        textTemplate.text = "";
-
-    //        foreach (char letter in fullText)
-    //        {
-    //            textTemplate.text += letter;
-    //            yield return new WaitForSeconds(delay);
-    //        }
-
-    //        yield return new WaitForSeconds(delay1);
-    //        textTemplate.text = "";
-
-    //        fullText = textComponent[1].text;
-    //        while (isMoving != false)
-    //        {
-    //            foreach (char letter in fullText)
-    //            {
-    //                textTemplate.text += letter;
-    //                yield return new WaitForSeconds(delay);
-    //            }
-    //        }
-
-    //        textTemplate.text = "";
+    //        itemIcons[noTarget - 1].SetActive(true);
     //    }
-    //    else
-    //    {
-    //        foreach (Button btn in animal)
-    //        {
-    //            btn.interactable = false;
-    //        }
-
-    //        // Validar que noTarget + 1 no exceda los límites de textComponent
-    //        if (noTarget + 1 < textComponent.Length)
-    //        {
-    //            fullText = textComponent[noTarget + 1].text;
-    //            textTemplate.text = "";
-    //            while (isMoving != false)
-    //            {
-    //                foreach (char letter in fullText)
-    //                {
-    //                    textTemplate.text += letter;
-    //                    yield return new WaitForSeconds(delay);
-    //                }
-    //            }
-    //        }
-    //        else
-    //        {
-    //            Debug.LogWarning("Índice fuera de rango en textComponent");
-    //        }
-    //    }
-
-    //    yield return new WaitForSeconds(delay1);
-    //    textBox.SetActive(false);
-    //    textTemplate.text = "";
     //}
 
     //Objetivo al que va a llegar
