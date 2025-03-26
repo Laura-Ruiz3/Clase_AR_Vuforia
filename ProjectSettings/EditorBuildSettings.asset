@@ -17,11 +17,14 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/marcadores.unity
     guid: d2ca5ce9132d4ed42ae4dead743031b5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/marcadores3.unity
     guid: 83b8f380cabc3db459fd11fb748dbf5b
   - enabled: 0
     path: Assets/Scenes/marcadores4.unity
     guid: c643276b3a0fc7d4eb75347fafbc1b6b
+  - enabled: 1
+    path: Assets/Scenes/marcadoresHistoria.unity
+    guid: ca74b95d76c9b2041821e39f40ee8888
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
