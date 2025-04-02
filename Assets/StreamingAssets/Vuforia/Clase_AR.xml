@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig>
   <Tracking>
-    <ImageTarget name="horse" size="1.000000 0.848921" />
-    <ImageTarget name="rabbit" size="1.000000 1.000000" />
-    <ImageTarget name="goat" size="1.000000 0.807818" />
-    <ImageTarget name="cat" size="1.000000 0.996109" />
-    <ImageTarget name="stardewlogo" size="1.000000 1.000000" />
+    <ImageTarget name="Start" size="1.000000 1.000000" />
+    <ImageTarget name="Cat" size="1.000000 0.996109" />
+    <ImageTarget name="Goat" size="1.000000 0.807818" />
+    <ImageTarget name="Rabbit" size="1.000000 1.000000" />
+    <ImageTarget name="Horse" size="1.000000 0.848921" />
+    <ImageTarget name="Sheep" size="1.000000 0.846975" />
   </Tracking>
 </QCARConfig>

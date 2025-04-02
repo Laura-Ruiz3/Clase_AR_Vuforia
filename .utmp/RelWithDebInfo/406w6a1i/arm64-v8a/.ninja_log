@@ -1,10 +1,19 @@
 # ninja log v5
 21	1385	7628528231626314	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	e69394ec90b319b6
+34	1511	7628528232892553	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	afa113a1ed470421
 0	1391	7628528231707690	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	1b7ece87b37c9eef
 40	1406	7628528231887862	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	a200fc0bcf1f1f2b
-28	1486	7628528232673798	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	c9018f6f20e00198
-34	1511	7628528232892553	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	afa113a1ed470421
+1782	1899	7628528236925643	C:/Users/andre/Documents/Practicas AR y VR/Git/Clase_AR_Vuforia/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/406w6a1i/obj/arm64-v8a/libgame.so	bdded04ab8572e9a
 6	1555	7628528233426838	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	690af5b3787d15e6
+28	1486	7628528232673798	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	c9018f6f20e00198
 16	1671	7628528234564016	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	95db6f57a8e05c5a
 11	1782	7628528235685497	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	ce1865285ae067e1
-1782	1899	7628528236925643	C:/Users/andre/Documents/Practicas AR y VR/Git/Clase_AR_Vuforia/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/406w6a1i/obj/arm64-v8a/libgame.so	bdded04ab8572e9a
+42	1266	7653134521280943	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	e69394ec90b319b6
+16	1285	7653134521393414	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	c9018f6f20e00198
+36	1305	7653134521726191	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	1b7ece87b37c9eef
+54	1321	7653134521879043	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	a200fc0bcf1f1f2b
+60	1398	7653134522673949	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	afa113a1ed470421
+8	1454	7653134523276700	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	690af5b3787d15e6
+48	1633	7653134525112134	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	95db6f57a8e05c5a
+24	1738	7653134526124539	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	ce1865285ae067e1
+1738	2078	7653134529601555	C:/Users/andre/Documents/Practicas AR y VR/Git/Clase_AR_Vuforia/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/406w6a1i/obj/arm64-v8a/libgame.so	bdded04ab8572e9a
