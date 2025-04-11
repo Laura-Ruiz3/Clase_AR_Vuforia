@@ -3,12 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 using Vuforia;
-using static UnityEngine.GraphicsBuffer;
 
 public class Move1 : MonoBehaviour
 {
@@ -82,6 +79,7 @@ public class Move1 : MonoBehaviour
         StartCoroutine(ShowText(noTarget));
     }
 
+    //Reconoce la entrada táctil y los gestos
     void inputMovement()
     {
         if (Input.touchCount > 0)
@@ -99,6 +97,8 @@ public class Move1 : MonoBehaviour
         }
     }
 
+    //Función que, dependiendo de la cantidad de marcadores detectados,
+    //se desliza hacia los lados o hacia el frente
     void setDirection(Vector2 v2)
     {
         int tmp;
@@ -106,25 +106,19 @@ public class Move1 : MonoBehaviour
         {
             if (v2.y > DIR_THRESHOLD)
             {
-                Debug.Log("Arriba");
                 tmp = availableTargets[1];                
                 if (availableTargets[1] != 5)
                     SwapElements(0, 1);
-
-                Debug.Log("Nueva lista: " + string.Join(", ", availableTargets));
                 goToTarget(tmp);
             }
         }
         else if (availableTargets.Count == 3)
         {
-            Debug.Log("El noTarget al deslizar es: " + noTarget);
             if (v2.x < -DIR_THRESHOLD)
             {
                 tmp = availableTargets[1];                
                 if (availableTargets[1] != 5)
                     SwapElements(0, 1);
-
-                Debug.Log("Nueva lista: " + string.Join(", ", availableTargets));
                 goToTarget(tmp);
             }
             if (v2.x > DIR_THRESHOLD)
@@ -132,13 +126,12 @@ public class Move1 : MonoBehaviour
                 tmp = availableTargets[2];                
                 if (availableTargets[2] != 5)
                     SwapElements(0, 2);
-
-                Debug.Log("Nueva lista: " + string.Join(", ", availableTargets));
                 goToTarget(tmp);
             }
         }
     }
 
+    //Función que indica a qué marcador moverse
     public void goToTarget(int num)
     {
         noTarget = num;
@@ -161,23 +154,24 @@ public class Move1 : MonoBehaviour
         }
     }
 
+    //Función que llama a la corrutina para mover el modelo
     public void moveToNextMarker(int num)
     {
         noTarget = num;
         if (noTarget == 0 && itemFound[5] == true)
             prevNoTarget = 0;
-        //Función para comprobar si el modelo está en movimiento
         if (!isMoving)
         {                        
             StartCoroutine(MoveModel());         
         }
     }
 
+    //Función que llama a la corrutina para mover el modelo
+    //en el caso de caer en la casilla del enemigo
     public void moveToNextMarkerAuto(int num)
     {
         noTarget = num;
         int tmp;
-        //Función para comprobar si el modelo está en movimiento
         if (availableTargets.Count == 2)
         {
             if (availableTargets[0] == 5)
@@ -185,7 +179,6 @@ public class Move1 : MonoBehaviour
                 tmp = 0;
                 availableTargets[1] = availableTargets[0];
                 availableTargets[0] = tmp;
-                Debug.Log("tmp es: " + tmp);
                 SwapElements(0, 2);
             }
         }
@@ -196,7 +189,6 @@ public class Move1 : MonoBehaviour
                 tmp = availableTargets[2];
                 availableTargets[2] = availableTargets[0];
                 availableTargets[0] = tmp;
-                Debug.Log("tmp es: " + tmp);
                 SwapElements(0,2);
             }
             if (availableTargets[2] == 5)
@@ -204,23 +196,19 @@ public class Move1 : MonoBehaviour
                 tmp = availableTargets[1];
                 availableTargets[1] = availableTargets[0];
                 availableTargets[0] = tmp;
-                Debug.Log("tmp es: " + tmp);
                 SwapElements(0, 1);
             }
         }
         for (int i = 0; i < items.Length - 1; i++)
         {
-            print("Holi");
             items[i].SetActive(false);
         }
         for (int i = 0; i < itemIcons.Length; i++)
         {
-            print("Holi");
             itemIcons[i].SetActive(false);
         }
         for (int i = 1; i < itemFound.Length - 1; i++)
         {
-            print("Holi: "+i);
             itemFound[i] = false;
         }
         if (!isMoving)
@@ -229,6 +217,7 @@ public class Move1 : MonoBehaviour
         }
     }
 
+    //Función que detecta los marcadores en tiempo de ejecución
     public void detectTarget()
     {
         List<int> newVisibleTargets = new List<int>();
@@ -277,23 +266,21 @@ public class Move1 : MonoBehaviour
                     SwapElements(0, 2);
                 }
             }         
-            Debug.Log("Lista: " + string.Join(", ", availableTargets));
         }        
     }
 
+    //Función que intercambia los marcadores detectados
+    //para que el marcador actual se encuentre como el primero de
+    //la lista
     public void SwapElements(int indexA, int indexB)
     {
-        // Verificar los índices antes de hacer el intercambio
-        Debug.Log($"Intercambiando {availableTargets[indexA]} con {availableTargets[indexB]}");
-
         int tmp = availableTargets[indexA];
         availableTargets[indexA] = availableTargets[indexB];
         availableTargets[indexB] = tmp;
-
-        // Mostrar la lista después del intercambio
-        Debug.Log("Lista después del intercambio: " + string.Join(", ", availableTargets));
     }
 
+    //Muestra los letreros dependiendo de la cantidad
+    //de marcadores detectados
     public void showOptions()
     {
         if (availableTargets.Count <= 1)
@@ -316,13 +303,13 @@ public class Move1 : MonoBehaviour
         }
     }
 
-    //Corrutina
+    //Corrutina que mueve al modelo de un
+    //marcador a otro
     private IEnumerator MoveModel()
     {
         isMoving = true;
         stopTextCoroutine = true;
         ObserverBehaviour target = ImageTargets[noTarget];
-        Debug.Log("El noTarget es: " + noTarget);
         if (target == null)
         {
             isMoving = false;
@@ -358,7 +345,6 @@ public class Move1 : MonoBehaviour
             {
                 audioSource.clip = clips[4];
                 audioSource.Play();
-                Debug.Log("Perdiste");
                 yield return new WaitForSeconds(3.0f);
             }                
         }
@@ -366,7 +352,8 @@ public class Move1 : MonoBehaviour
             StartCoroutine(ShowText(noTarget));
     }
 
-
+    //Corrutina que muestra cuadros de texto e indica si el flujo
+    //del juego es el correcto
     private IEnumerator ShowText(int noTarget)
     {
         stopTextCoroutine = false;
@@ -723,7 +710,6 @@ public class Move1 : MonoBehaviour
                 }
                 break;
             case 5:
-                Debug.Log("Entró al caso 5");
                 if (itemFound[5] == false)
                 {                  
                         itemFound[5] = true;
